@@ -26,7 +26,8 @@ dictionary = {
   "to" => "2",
   "two" => "2",
   "too" => "2",
-  "for, four" => "4",
+  "for" => "4",
+  "four" => "4",
   "be" => "b",
   "you" => "u",
   "at" => "@",
@@ -36,8 +37,8 @@ dictionary = {
   tweet_array = tweet.split
 
   corrected_array = tweet_array.collect do |item|
-    if dictionary_keys.include?(item)
-      item = dictionary[item]
+    if dictionary_keys.include?(item.downcase)
+      item = dictionary[item.downcase]
     else
       item
     end
@@ -52,6 +53,8 @@ end
 #   * **Hint:** Remember that you can `puts` out the result of a method by putting `puts` in front of the method call.
 
 def bulk_tweet_shortener(tweet_array)
-  
+  tweet_array.each do |tweet|
+    puts word_substituter(tweet)
+  end
 
 end
